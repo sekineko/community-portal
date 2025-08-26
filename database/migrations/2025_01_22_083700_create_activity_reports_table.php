@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('activity_reports', function (Blueprint $table) {
+            $table->id(); // ID
+            $table->string('title'); // タイトル
+            $table->date('date'); // 日付
+            $table->text('content'); // 内容
+            $table->string('image_path')->nullable(); // 画像のパス
+            $table->timestamps(); // 作成日・更新日
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('activity_reports');
+    }
+};
